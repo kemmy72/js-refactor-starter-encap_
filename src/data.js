@@ -1,5 +1,6 @@
 'use strict';
-
+// list entries
+// an array of the todoText
 export const entries = [
   { todoText: 'hyf exercises', completed: false },
   { todoText: 'hyf project', completed: false },
