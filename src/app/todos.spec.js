@@ -4,6 +4,7 @@ import jsdom from 'jsdom';
 import chai from 'chai';
 
 import { todos } from './todos.js';
+import { List } from './list.js';
 
 // build the DOM properties we will use in testing
 const { document, Element } = new jsdom.JSDOM('').window;
@@ -14,9 +15,28 @@ global.document = document;
 // declare the `expect` variable for testing
 const expect = chai.expect;
 
+describe('List: methods for list instances', () => {
+  describe('list title: getter and setter', () => {
+    it("sets the list's title", () => {
+      // create new data for this instance
+      const newTitle = '';
+      // create the instance
+      const list = new List(newTitle, []);
+
+      expect(list._state.title).to.equal(newTitle);
+    });
+    it("gets the list's title", () => {
+      // create new data for this instance
+      const newTitle = 'toads';
+      // create the instance
+      const list = new List(newTitle, []);
+      expect(list.title).to.equal(newTitle);
+    });
+  });
 describe('app: todo manager inspired by Practical JavaScript', () => {
   describe('set entries: copies entries from an array into state', () => {
     it('does not store the same array', () => {
+      // create the new entries
       const newEntries = [
         { text: 'hello', completed: true },
         { text: 'bye', completed: false },
@@ -62,7 +82,9 @@ describe('app: todo manager inspired by Practical JavaScript', () => {
       { text: 'hello', completed: false },
       { text: 'bye', completed: false },
     ];
-
+     // create the instance
+     const list = new List('testing toggleCompleted', newEntries);
+    
     it('changes the first todo', () => {
       todos.toggleCompleted(0);
       expect(todos.entries).to.deep.equal([
