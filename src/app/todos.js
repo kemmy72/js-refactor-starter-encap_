@@ -1,9 +1,27 @@
 'use strict';
 
-export const todos = {
-  _state: {},
+export const todos List= {
+  _state: {
+   title:'',
+   entries:[],
+  };
+
+  constructor(title, entries) {
+  this.title = title;
+  this.entries = entries;
+}
 
   // getters & setters
+
+  get title() {
+    return this._state.title;
+  }
+  set title(newTitle) {
+    if (typeof newTitle !== 'string') {
+      throw new TypeError('newTitle is not a string');
+    }
+    this._state.title = newTitle;
+  }
   get entries() {
     return [...this._state.entries];
   },
@@ -15,7 +33,7 @@ export const todos = {
       throw new TypeError('some entries are not objects');
     }
     this._state.entries = [...newEntries];
-  },
+  }
 
   // logic methods
   toggleCompleted(position) {
@@ -24,7 +42,7 @@ export const todos = {
     }
     const todo = this.entries[position];
     todo.completed = !todo.completed;
-  },
+  }
 
   // view methods
   createDeleteButton() {
@@ -32,7 +50,7 @@ export const todos = {
     deleteButton.textContent = 'Delete';
     deleteButton.className = 'deleteButton';
     return deleteButton;
-  },
+  }
 
   render() {
     const todosUl = document.createElement('ul');
@@ -42,5 +60,5 @@ export const todos = {
     }
 
     return todosUl;
-  },
-};
+  }
+}
