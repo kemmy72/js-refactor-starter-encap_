@@ -1,4 +1,7 @@
 app: todo manager inspired by Practical JavaScript
+  list title: getter and setter
+  √ PASS: sets the list's title 
+  √ PASS: gets the list's title
   set entries: copies entries from an array into state
     √ PASS: does not store the same array
     √ PASS: does store the correct entries
